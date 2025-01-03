@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: beb6a103c58af944186f51af1726ce4d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - sourceMesh: {fileID: -2432090755550338912, guid: 0832f1774fb290f40ae081f7e6559649, type: 3}
+  - pointsMesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  - sourceMaterial: {fileID: -876546973899608171, guid: 0832f1774fb290f40ae081f7e6559649, type: 3}
+  - sourceMeshTexture: {instanceID: 0}
+  - meshPreview: {fileID: 919132149155446097, guid: 0832f1774fb290f40ae081f7e6559649, type: 3}
+  - rendererData: {fileID: 11400000, guid: c8454df69fbf9274797f647a7ac78c6e, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
