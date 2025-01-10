@@ -117,7 +117,7 @@
                 "m_Node": {
                     "m_Id": "0b2c4fae594d4cba98d06ce5f67f8edd"
                 },
-                "m_SlotId": 1
+                "m_SlotId": 2
             },
             "m_InputSlot": {
                 "m_Node": {
@@ -163,9 +163,9 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "eca70909122f4ba7ab9115ca039b0e4c"
+                    "m_Id": "fb1d4aabb2b84d01b78eba6efb6a0326"
                 },
-                "m_SlotId": 1
+                "m_SlotId": 0
             }
         },
         {
@@ -346,20 +346,6 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "9797f9c24e26481aa494130970c91eb7"
-                },
-                "m_SlotId": 0
-            }
-        },
-        {
-            "m_OutputSlot": {
-                "m_Node": {
-                    "m_Id": "eca70909122f4ba7ab9115ca039b0e4c"
-                },
-                "m_SlotId": 2
-            },
-            "m_InputSlot": {
-                "m_Node": {
-                    "m_Id": "fb1d4aabb2b84d01b78eba6efb6a0326"
                 },
                 "m_SlotId": 0
             }
@@ -1363,8 +1349,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 2050.0,
-            "y": -362.0,
+            "x": 1444.0,
+            "y": -244.0,
             "width": 208.0,
             "height": 315.0
         }
@@ -2009,25 +1995,25 @@
     "m_Value": 0.0,
     "m_SerializableColorKeys": [
         {
-            "x": 0.6320754289627075,
-            "y": 0.17531147599220277,
-            "z": 0.35203495621681216,
+            "x": 0.5283018946647644,
+            "y": 0.2516910135746002,
+            "z": 0.3589968979358673,
             "w": 0.0
         },
         {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
+            "x": 0.5283018946647644,
+            "y": 0.2516910135746002,
+            "z": 0.3589968979358673,
             "w": 1.0
         }
     ],
     "m_SerializableAlphaKeys": [
         {
-            "x": 1.0,
+            "x": 0.0,
             "y": 0.0
         },
         {
-            "x": 1.0,
+            "x": 0.0,
             "y": 1.0
         }
     ],
