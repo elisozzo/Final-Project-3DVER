@@ -17,7 +17,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2450
   stringTagMap:
     RenderType: TransparentCutout
   disabledShaderPasses: []
@@ -127,14 +127,14 @@ Material:
     - _ZWriteControl: 0
     - _dissolve_amount: 0
     - _dissolve_scale: 40
-    - _dissolve_width: 0.01
+    - _dissolve_width: 0.02
     - _normal_strength: 0.1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _dissolve_color: {r: 2, g: 0.59240603, b: 0.18848167, a: 0}
+    - _dissolve_color: {r: 1.9766746, g: 0.58549696, b: 0.18628347, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1673244523633574057
 MonoBehaviour:
