@@ -128,7 +128,7 @@ Material:
     - _dissolve_amount: 0
     - _dissolve_scale: 40
     - _dissolve_width: 0.01
-    - _normal_strength: 0.2
+    - _normal_strength: 0.1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

@@ -4,49 +4,56 @@ using UnityEngine;
 
 public class dissolvingControl : MonoBehaviour
 {
-    public MeshRenderer mesh;
+    private MeshRenderer mesh; // Dichiarazione del MeshRenderer
+    private Material meshMaterial; // Dichiarazione del Material
     public float dissolveRate = 0.0125f;
     public float refreshRate = 0.025f;
 
-    public Material meshMaterial;
     // Start is called before the first frame update
     void Start()
     {
+        // Recupera il MeshRenderer
+        mesh = GetComponent<MeshRenderer>();
+
         if (mesh != null)
+        {
+            // Recupera il materiale associato
             meshMaterial = mesh.material;
+        }
         else
         {
-            Debug.LogError("non c'è materiale");
+            Debug.LogError("Non è stato trovato alcun MeshRenderer!");
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown (KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             StartCoroutine(DissolveCo());
         }
     }
 
-    IEnumerator DissolveCo ()
+    IEnumerator DissolveCo()
     {
+        if (meshMaterial == null)
+        {
+            Debug.LogError("Materiale non trovato. Impossibile avviare la dissolvenza.");
+            yield break;
+        }
+
         float counter = 0;
 
-        // Esegui la dissolvenza
+        // Imposta il valore iniziale della dissolvenza
         meshMaterial.SetFloat("_dissolve_amount", counter);
-        Debug.LogError("sono qua");
 
-
-        while (meshMaterial.GetFloat("_dissolve_amount") < 1)
-            {
-                counter += dissolveRate;
-            Debug.LogError("dentro while");
-
+        // Continua a incrementare il valore di dissolvenza fino a 1
+        while (counter < 1)
+        {
+            counter += dissolveRate;
             meshMaterial.SetFloat("_dissolve_amount", counter);
-
-                yield return new WaitForSeconds(refreshRate);
-            }
-        
+            yield return new WaitForSeconds(refreshRate);
+        }
     }
 }
