@@ -10,10 +10,25 @@ public class dissolvingControl : MonoBehaviour
     public float refreshRate = 0.025f;
     private Light[] sceneLights;
     private float[] originalIntensities;
+    public Camera playerCamera; 
+    public Material skyboxMaterial_diurno;
+    public Material skyboxMaterial_notturno;
 
 
     void Start()
     {
+
+        if (playerCamera == null)
+        {
+            Debug.LogError("PlayerCamera non è assegnata. Assegna la camera nello script.");
+            return;
+        }
+
+        //defaultSkybox = RenderSettings.skybox;
+        //playerCamera.clearFlags = CameraClearFlags.Skybox;
+        //skyboxMaterial_diurno = RenderSettings.skybox;
+
+
         mesh = GetComponent<MeshRenderer>();
 
         if (mesh != null)
@@ -25,7 +40,7 @@ public class dissolvingControl : MonoBehaviour
             Debug.LogWarning("Non è stata trovata la mesh!");
         }
 
-        sceneLights = FindObjectsOfType<Light>();
+        /*sceneLights = FindObjectsOfType<Light>();
         if (sceneLights.Length == 0)
         {
             Debug.LogWarning("Nessuna luce trovata nella scena.");
@@ -38,8 +53,7 @@ public class dissolvingControl : MonoBehaviour
                 originalIntensities[i] = sceneLights[i].intensity;
                 sceneLights[i].intensity = 0;
             }
-        }
-      
+        }*/
     }
 
     void Update()
@@ -72,21 +86,21 @@ public class dissolvingControl : MonoBehaviour
 
         Debug.Log(counter);
 
+
         while (counter > 0)
         {
-
+            RenderSettings.skybox = skyboxMaterial_notturno;
             Debug.Log("torno indietro");
             counter -= dissolveRate;
             counter = Mathf.Clamp01(counter);
             meshMaterial.SetFloat("_dissolve_amount", counter);
-            for (int i = 0; i < sceneLights.Length; i++)
+            /*for (int i = 0; i < sceneLights.Length; i++)
             {
                 for (int j = 0; j < originalIntensities[i]; j++)
                     sceneLights[i].intensity += dissolveRate;
-            }
+            }*/
 
             yield return new WaitForSeconds(refreshRate);
         }
- 
     }
 }
