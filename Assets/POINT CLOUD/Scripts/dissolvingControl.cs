@@ -74,6 +74,12 @@ public class dissolvingControl : MonoBehaviour
         {
             StartCoroutine(DissolveCo());
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            StartCoroutine(DissolvePM());
+        }
+
     }
 
     IEnumerator DissolveCo()
@@ -101,6 +107,8 @@ public class dissolvingControl : MonoBehaviour
         {
             pcObject.SetActive(true);
 
+            pc_counter = Mathf.Clamp01(pc_counter);
+
             counter += dissolveRate;
             meshMaterial.SetFloat("_dissolve_amount", counter);
             
@@ -117,24 +125,56 @@ public class dissolvingControl : MonoBehaviour
         }
 
 
-        /*Debug.Log(counter);
+        //Debug.Log(counter);
 
-
-        while (counter > 0)
+        IEnumerator DissolvePM()
         {
-            RenderSettings.skybox = skyboxMaterial_notturno;
-            Debug.Log("torno indietro");
-            counter -= dissolveRate;
-            counter = Mathf.Clamp01(counter);
-            meshMaterial.SetFloat("_dissolve_amount", counter);
-            /*for (int i = 0; i < sceneLights.Length; i++)
+            if (meshMaterial == null)
             {
-                for (int j = 0; j < originalIntensities[i]; j++)
-                    sceneLights[i].intensity += dissolveRate;
-            }*/
+                Debug.LogError("Materiale non trovato.");
+                yield break;
+            }
 
-            //yield return new WaitForSeconds(refreshRate);
-        //}
-    
-    }
+            float counter = 1;
+            float pc_counter = 0;
+
+            meshMaterial.SetFloat("_dissolve_amount", counter);
+            pcmaterials1.SetFloat("_dissolve_amount", pc_counter);
+            pcmaterials2.SetFloat("_dissolve_amount", pc_counter);
+            pcmaterials3.SetFloat("_dissolve_amount", pc_counter);
+            pcmaterials4.SetFloat("_dissolve_amount", pc_counter);
+            pcmaterials5.SetFloat("_dissolve_amount", pc_counter);
+            pcmaterials6.SetFloat("_dissolve_amount", pc_counter);
+            pcmaterials7.SetFloat("_dissolve_amount", pc_counter);
+
+
+            while (counter > 0 && pc_counter < 1)
+            {
+                //RenderSettings.skybox = skyboxMaterial_notturno;
+                Debug.Log("torno indietro");
+                counter -= dissolveRate;
+                pc_counter += dissolveRate;
+                counter = Mathf.Clamp01(counter);
+              
+                meshMaterial.SetFloat("_dissolve_amount", counter);
+                pcmaterials1.SetFloat("_dissolve_amount", pc_counter);
+                pcmaterials2.SetFloat("_dissolve_amount", pc_counter);
+                pcmaterials3.SetFloat("_dissolve_amount", pc_counter);
+                pcmaterials4.SetFloat("_dissolve_amount", pc_counter);
+                pcmaterials5.SetFloat("_dissolve_amount", pc_counter);
+                pcmaterials6.SetFloat("_dissolve_amount", pc_counter);
+                pcmaterials7.SetFloat("_dissolve_amount", pc_counter);
+                /*for (int i = 0; i < sceneLights.Length; i++)
+                {
+                    for (int j = 0; j < originalIntensities[i]; j++)
+                        sceneLights[i].intensity += dissolveRate;
+                }*/
+
+                yield return new WaitForSeconds(refreshRate);
+                //}
+
+            }
+
+            pcObject.setActive(false);
+        }         
 }
