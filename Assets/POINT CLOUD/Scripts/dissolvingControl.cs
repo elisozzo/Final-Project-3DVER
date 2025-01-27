@@ -13,7 +13,13 @@ public class dissolvingControl : MonoBehaviour
     public Camera playerCamera; 
     public Material skyboxMaterial_diurno;
     public Material skyboxMaterial_notturno;
-
+    public Material pcmaterials1;
+    public Material pcmaterials2;
+    public Material pcmaterials3;
+    public Material pcmaterials4;
+    public Material pcmaterials5;
+    public Material pcmaterials6;
+    public Material pcmaterials7;
 
     void Start()
     {
@@ -28,8 +34,12 @@ public class dissolvingControl : MonoBehaviour
         //playerCamera.clearFlags = CameraClearFlags.Skybox;
         //skyboxMaterial_diurno = RenderSettings.skybox;
 
-
         mesh = GetComponent<MeshRenderer>();
+
+        GameObject pcObject = GameObject.Find("PC");
+
+        pcObject.SetActive(false); 
+
 
         if (mesh != null)
         {
@@ -73,18 +83,39 @@ public class dissolvingControl : MonoBehaviour
         }
 
         float counter = 0;
+        float pc_counter = 1;
 
         meshMaterial.SetFloat("_dissolve_amount", counter);
+        pcmaterials1.SetFloat("_dissolve_amount", pc_counter);
+        pcmaterials2.SetFloat("_dissolve_amount", pc_counter);
+        pcmaterials3.SetFloat("_dissolve_amount", pc_counter);
+        pcmaterials4.SetFloat("_dissolve_amount", pc_counter);
+        pcmaterials5.SetFloat("_dissolve_amount", pc_counter);
+        pcmaterials6.SetFloat("_dissolve_amount", pc_counter);
+        pcmaterials7.SetFloat("_dissolve_amount", pc_counter);
 
 
-        while (counter < 1)
+        while (counter < 1 && pc_counter > 0)
         {
+            pcObject.SetActive(true);
+
             counter += dissolveRate;
             meshMaterial.SetFloat("_dissolve_amount", counter);
+            
+            pc_counter -= dissolveRate;
+            pcmaterials1.SetFloat("_dissolve_amount", pc_counter);
+            pcmaterials2.SetFloat("_dissolve_amount", pc_counter);
+            pcmaterials3.SetFloat("_dissolve_amount", pc_counter);
+            pcmaterials4.SetFloat("_dissolve_amount", pc_counter);
+            pcmaterials5.SetFloat("_dissolve_amount", pc_counter);
+            pcmaterials6.SetFloat("_dissolve_amount", pc_counter);
+            pcmaterials7.SetFloat("_dissolve_amount", pc_counter);
+
             yield return new WaitForSeconds(refreshRate);
         }
 
-        Debug.Log(counter);
+
+        /*Debug.Log(counter);
 
 
         while (counter > 0)
@@ -100,7 +131,8 @@ public class dissolvingControl : MonoBehaviour
                     sceneLights[i].intensity += dissolveRate;
             }*/
 
-            yield return new WaitForSeconds(refreshRate);
-        }
+            //yield return new WaitForSeconds(refreshRate);
+        //}
+    
     }
 }
