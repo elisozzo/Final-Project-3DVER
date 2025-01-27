@@ -10,16 +10,18 @@ public class dissolvingControl : MonoBehaviour
     public float refreshRate = 0.025f;
     private Light[] sceneLights;
     private float[] originalIntensities;
-    public Camera playerCamera; 
-    public Material skyboxMaterial_diurno;
-    public Material skyboxMaterial_notturno;
-    public Material pcmaterials1;
-    public Material pcmaterials2;
-    public Material pcmaterials3;
-    public Material pcmaterials4;
-    public Material pcmaterials5;
-    public Material pcmaterials6;
-    public Material pcmaterials7;
+    public Camera playerCamera;
+    //public Material skyboxMaterial_diurno;
+    //public Material skyboxMaterial_notturno;
+    [SerializeField] private Material pcmaterials1;
+    [SerializeField] private Material pcmaterials2;
+    [SerializeField] private Material pcmaterials3;
+    [SerializeField] private Material pcmaterials4;
+    [SerializeField] private Material pcmaterials5;
+    [SerializeField] private Material pcmaterials6;
+    [SerializeField] private Material pcmaterials7;
+    private GameObject pcObject;
+
 
     void Start()
     {
@@ -36,7 +38,7 @@ public class dissolvingControl : MonoBehaviour
 
         mesh = GetComponent<MeshRenderer>();
 
-        GameObject pcObject = GameObject.Find("PC");
+        pcObject = GameObject.Find("PC");
 
         pcObject.SetActive(false); 
 
